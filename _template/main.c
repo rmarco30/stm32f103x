@@ -1,4 +1,13 @@
+/**
+ * \file        _template.c
+ * \author      Marco, Roldan L.
+ * \version     v1.0
+ * \date        06/06/2021
+ * \brief       stm32f103x project template
+ */
+
 #include "stm32f10x.h"
+#include "main.h"
 
 void delay(long);
 void gpio_ports_enable(void);
