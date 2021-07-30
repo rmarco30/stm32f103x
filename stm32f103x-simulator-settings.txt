@@ -1,0 +1,1 @@
+dialog DLL: DARMSTM.DLL		parameter: -pSTM32F101C8

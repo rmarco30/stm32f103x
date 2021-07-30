@@ -1,0 +1,171 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00010000         xr
+SRAM             0x20000000         0x00005000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD main.o
+LOAD gpio.o
+LOAD stm32_startup.o
+
+.text           0x08000000      0x2d8
+ *(.isr_vector)
+ .isr_vector    0x08000000      0x130 stm32_startup.o
+                0x08000000                vectors
+ *(.text)
+ .text          0x08000130       0xa4 main.o
+                0x08000130                main
+                0x08000194                periph_clk_init
+                0x080001ac                delay
+ .text          0x080001d4       0x6c gpio.o
+                0x080001d4                gpio_init
+                0x080001f8                turn_on_led
+                0x0800021c                turn_off_led
+ .text          0x08000240       0x8c stm32_startup.o
+                0x08000240                EXTI2_IRQHandler
+                0x08000240                TIM8_TRG_COM_IRQHandler
+                0x08000240                TIM8_CC_IRQHandler
+                0x08000240                DebugMon_Handler
+                0x08000240                TIM1_CC_IRQHandler
+                0x08000240                HardFault_Handler
+                0x08000240                TIM6_IRQHandler
+                0x08000240                SysTick_Handler
+                0x08000240                PVD_IRQHandler
+                0x08000240                SDIO_IRQHandler
+                0x08000240                PendSV_Handler
+                0x08000240                NMI_Handler
+                0x08000240                EXTI3_IRQHandler
+                0x08000240                EXTI0_IRQHandler
+                0x08000240                I2C2_EV_IRQHandler
+                0x08000240                UsageFault_Handler
+                0x08000240                ADC1_2_IRQHandler
+                0x08000240                SPI1_IRQHandler
+                0x08000240                TAMPER_IRQHandler
+                0x08000240                TIM8_UP_IRQHandler
+                0x08000240                DMA2_Channel2_IRQHandler
+                0x08000240                DMA1_Channel4_IRQHandler
+                0x08000240                USART3_IRQHandler
+                0x08000240                RTC_IRQHandler
+                0x08000240                DMA1_Channel7_IRQHandler
+                0x08000240                USBWakeUp_IRQHandler
+                0x08000240                CAN1_RX1_IRQHandler
+                0x08000240                UART5_IRQHandler
+                0x08000240                ADC3_IRQHandler
+                0x08000240                TIM4_IRQHandler
+                0x08000240                DMA2_Channel1_IRQHandler
+                0x08000240                I2C1_EV_IRQHandler
+                0x08000240                DMA1_Channel6_IRQHandler
+                0x08000240                UART4_IRQHandler
+                0x08000240                TIM3_IRQHandler
+                0x08000240                RCC_IRQHandler
+                0x08000240                TIM1_TRG_COM_IRQHandler
+                0x08000240                DMA1_Channel1_IRQHandler
+                0x08000240                Default_Handler
+                0x08000240                EXTI15_10_IRQHandler
+                0x08000240                TIM7_IRQHandler
+                0x08000240                TIM5_IRQHandler
+                0x08000240                EXTI9_5_IRQHandler
+                0x08000240                SPI2_IRQHandler
+                0x08000240                MemManage_Handler
+                0x08000240                SVC_Handler
+                0x08000240                DMA1_Channel5_IRQHandler
+                0x08000240                EXTI4_IRQHandler
+                0x08000240                USB_LP_CAN1_RX0_IRQHandler
+                0x08000240                USB_HP_CAN1_TX_IRQHandler
+                0x08000240                DMA1_Channel3_IRQHandler
+                0x08000240                FSMC_IRQHandler
+                0x08000240                TIM1_UP_IRQHandler
+                0x08000240                WWDG_IRQHandler
+                0x08000240                TIM2_IRQHandler
+                0x08000240                TIM1_BRK_IRQHandler
+                0x08000240                EXTI1_IRQHandler
+                0x08000240                RTCAlarm_IRQHandler
+                0x08000240                DMA2_Channel4_5_IRQHandler
+                0x08000240                USART2_IRQHandler
+                0x08000240                I2C2_ER_IRQHandler
+                0x08000240                DMA1_Channel2_IRQHandler
+                0x08000240                TIM8_BRK_IRQHandler
+                0x08000240                CAN1_SCE_IRQHandler
+                0x08000240                FLASH_IRQHandler
+                0x08000240                BusFault_Handler
+                0x08000240                USART1_IRQHandler
+                0x08000240                SPI3_IRQHandler
+                0x08000240                I2C1_ER_IRQHandler
+                0x08000240                DMA2_Channel3_IRQHandler
+                0x08000246                Reset_Handler
+ *(.rodata)
+ .rodata        0x080002cc        0x9 main.o
+                0x080002cc                my_variable1
+                0x080002d0                my_variable2
+                0x080002d4                my_variable3
+                0x080002d8                . = ALIGN (0x4)
+ *fill*         0x080002d5        0x3 
+                0x080002d8                _etext = .
+
+.glue_7         0x080002d8        0x0
+ .glue_7        0x080002d8        0x0 linker stubs
+
+.glue_7t        0x080002d8        0x0
+ .glue_7t       0x080002d8        0x0 linker stubs
+
+.vfp11_veneer   0x080002d8        0x0
+ .vfp11_veneer  0x080002d8        0x0 linker stubs
+
+.v4_bx          0x080002d8        0x0
+ .v4_bx         0x080002d8        0x0 linker stubs
+
+.iplt           0x080002d8        0x0
+ .iplt          0x080002d8        0x0 main.o
+
+.rel.dyn        0x080002d8        0x0
+ .rel.iplt      0x080002d8        0x0 main.o
+
+.data           0x20000000        0x8 load address 0x080002d8
+                0x20000000                _sdata = .
+ *(.data)
+ .data          0x20000000        0x8 main.o
+                0x20000000                x
+                0x20000004                y
+ .data          0x20000008        0x0 gpio.o
+ .data          0x20000008        0x0 stm32_startup.o
+                0x20000008                . = ALIGN (0x4)
+                0x20000008                _edata = .
+
+.igot.plt       0x20000008        0x0 load address 0x080002e0
+ .igot.plt      0x20000008        0x0 main.o
+
+.bss            0x20000008        0xc load address 0x080002e0
+                0x20000008                _sbss = .
+ *(.bss)
+ .bss           0x20000008        0xc main.o
+                0x20000008                a
+                0x2000000c                b
+                0x20000010                c
+ .bss           0x20000014        0x0 gpio.o
+ .bss           0x20000014        0x0 stm32_startup.o
+ *(COMMON)
+                0x20000014                . = ALIGN (0x4)
+                0x20000014                _ebss = .
+                0x20000014                . = ALIGN (0x4)
+                0x20000014                end = .
+OUTPUT(final.elf elf32-littlearm)
+LOAD linker stubs
+
+.comment        0x00000000       0x4d
+ .comment       0x00000000       0x4d main.o
+                                 0x4e (size before relaxing)
+ .comment       0x0000004d       0x4e gpio.o
+ .comment       0x0000004d       0x4e stm32_startup.o
+
+.ARM.attributes
+                0x00000000       0x2d
+ .ARM.attributes
+                0x00000000       0x2d main.o
+ .ARM.attributes
+                0x0000002d       0x2d gpio.o
+ .ARM.attributes
+                0x0000005a       0x2d stm32_startup.o
