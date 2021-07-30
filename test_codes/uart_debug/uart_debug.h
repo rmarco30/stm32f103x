@@ -1,6 +1,10 @@
 #ifndef __UART_DEBUG_H
 #define __UART_DEBUG_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "stm32f10x.h"
 #include "stdio.h"
 
@@ -41,6 +45,10 @@ void uart_tx_str(char *str);
         uart_tx_str(res);
 
 */
+
+#ifdef __cplusplus
+}
+#endif // __cplusplus
 
 
 #endif // __UART_DEBUG_H
