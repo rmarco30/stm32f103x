@@ -32,6 +32,8 @@ void gpio_init(GPIO_TypeDef *GPIOx, uint8_t pin, gpio_pin_conf_t *gpio_pin_conf)
     
     else {
         
+        pin = pin % 8;
+        
         /* clear pin fields */
         GPIOx->CRH &= ~((uint32_t)0x0f << (pin * 4));
 
