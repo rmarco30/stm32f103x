@@ -44,25 +44,9 @@ int main(void) {
 
 
 void vTask1_handler(void *params) {
-	while(1) {
-		if(UART_ACCESS_KEY == AVAILABLE) {
-			UART_ACCESS_KEY = NON_AVAILABLE;
-		    uart1_tx("hello from task 1\n");
-		    vTaskDelay(500 / portTICK_PERIOD_MS);
-		    UART_ACCESS_KEY =  AVAILABLE;
-		    taskYIELD();
-		}
-	}
+	while(1);
 }
 
 void vTask2_handler(void *params) {
-	while(1) {
-		if(UART_ACCESS_KEY == AVAILABLE) {
-			UART_ACCESS_KEY = NON_AVAILABLE;
-		    uart1_tx("hello from task 2\n");
-		    vTaskDelay(500 / portTICK_PERIOD_MS);
-		    UART_ACCESS_KEY =  AVAILABLE;
-		    taskYIELD();
-		}
-	}
+	while(1);
 }

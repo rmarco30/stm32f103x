@@ -13,8 +13,6 @@
 #include "stm32f10x.h"
 #include "FreeRTOS.h"
 #include "task.h"
-#include "prv_periph.h"
-#include "string.h"
 
 
 /* Function Prototypes */
@@ -25,12 +23,9 @@ void vTask2_handler(void *params);
 /* Globals */
 TaskHandle_t xTaskHandle1 = NULL;
 TaskHandle_t xTaskHandle2 = NULL;
-uint8_t UART_ACCESS_KEY = AVAILABLE;
 
 
 int main(void) {
-
-	prv_periph_init();
 
 	// creating task
 	xTaskCreate(vTask1_handler, "Task-1", configMINIMAL_STACK_SIZE, NULL, 2, &xTaskHandle1);
@@ -44,25 +39,9 @@ int main(void) {
 
 
 void vTask1_handler(void *params) {
-	while(1) {
-		if(UART_ACCESS_KEY == AVAILABLE) {
-			UART_ACCESS_KEY = NON_AVAILABLE;
-		    uart1_tx("hello from task 1\n");
-		    vTaskDelay(500 / portTICK_PERIOD_MS);
-		    UART_ACCESS_KEY =  AVAILABLE;
-		    taskYIELD();
-		}
-	}
+	while(1);
 }
 
 void vTask2_handler(void *params) {
-	while(1) {
-		if(UART_ACCESS_KEY == AVAILABLE) {
-			UART_ACCESS_KEY = NON_AVAILABLE;
-		    uart1_tx("hello from task 2\n");
-		    vTaskDelay(500 / portTICK_PERIOD_MS);
-		    UART_ACCESS_KEY =  AVAILABLE;
-		    taskYIELD();
-		}
-	}
+	while(1);
 }
