@@ -5,3 +5,6 @@
 /*/*/*.scvd
 /*/*/DebugConfig
 /*/*/RTE
+/exercises/freertos-eclipse/.metadata
+/exercises/freertos-eclipse/RemoteSystemsTempFiles
+/exercises/freertos-eclipse/freertos-eclipse/.settings
