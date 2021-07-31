@@ -5,6 +5,10 @@
 /*/*/*.scvd
 /*/*/DebugConfig
 /*/*/RTE
+/exercises/freertos/keil/*/freertos-keil.uvguix.marco
+/exercises/freertos/keil/*/freertos-keil.uvoptx
+/exercises/freertos/keil/*/freertos-keil.uvprojx
+
 /exercises/freertos-eclipse/.metadata
 /exercises/freertos-eclipse/RemoteSystemsTempFiles
 /exercises/freertos-eclipse/freertos-eclipse/.settings
