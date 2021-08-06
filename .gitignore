@@ -9,4 +9,6 @@
 /exercises/freertos/keil/*/freertos-keil.uvoptx
 /exercises/freertos/keil/*/freertos-keil.uvprojx
 
-/exercises/freertos/eclipse/freertos-eclipse/.metadata
+/exercises/freertos/eclipse/.metadata
+/exercises/freertos/eclipse/*/* Debug.cfg
+/exercises/freertos/eclipse/*/* Debug.launch
